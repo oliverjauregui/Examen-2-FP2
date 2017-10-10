@@ -24,6 +24,9 @@ class Sell {
   getWin(){
     return this.getTotal() * 0.1;
   }
+  getRealTotal(){
+    return this.getTotal() + this.getWin();
+  }
 }
 
 const sale1 = new Sell("Sal", 5, 2);
@@ -46,13 +49,16 @@ class Amount {
 
 	print(){
 		let sumProm = 0;
+    let num = 1;
 		console.log(this.getName());
-		console.log("---------");
+		console.log("----------------------------------------------------------------------------------------------------------");
 		for (let sale of this.products){
-      console.log(`${sale.getProduct()}: ${sale.getCant()}: ${sale.getPrice()}: ${sale.getTotal()}: ${sale.getWin()}`);
-			sumProm = sumProm + sale.getTotal();
+      console.log(`    N°        Producto    Cantidad     PrecioU      Total       Ganancia
+    ${num}:         ${sale.getProduct()}:            ${sale.getCant()}:        ${sale.getPrice()}:          ${sale.getTotal()}:         ${sale.getWin()}`);
+			sumProm = sumProm + sale.getRealTotal();
+      num = num + 1;
 		}
-		console.log(`El total de dinero que entro en la caja es ${sumProm}`)
+		console.log(`El total de dinero que entro en la caja es ${sumProm}`);
 	}
 }
 
